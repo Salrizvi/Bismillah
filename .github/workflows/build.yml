@@ -1,17 +1,19 @@
 name: CI
 on:
   push:
-    branches: [ main ]
+    branches:  
+      -main 
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout Repository
+        uses: actions/checkout@v2
 
       # used to cache dependencies with a timeout
-      - name: Get Date
+      - name: Use Node.js 16
         id: get-date
         run: |
           echo "::set-output name=date::$(/bin/date -u "+%Y%m%d")"
